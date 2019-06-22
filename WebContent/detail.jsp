@@ -77,7 +77,7 @@
 						<button type="submit" class="btn btn-danger" onclick="return check()">
 							<span class="glyphicon glyphicon-shopping-cart"></span>加入购物车
 						</button>
-						<a href="cart.jsp">
+						<a href="servlet/CartServlet?action=show">
 							<button type="button" class="btn btn-primary" onclick="return check()">
 								<span class="glyphicon glyphicon-th"></span>查看购物车
 							</button>

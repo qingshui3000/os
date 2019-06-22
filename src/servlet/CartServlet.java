@@ -64,7 +64,10 @@ public class CartServlet extends HttpServlet {
 				cDao.add(cart);
 			}
 			if(action.equals("show")) {
-				ArrayList<E>;
+				int uid = Integer.parseInt(session.getAttribute("uid").toString());
+				ArrayList<Cart> list = cDao.getAll(uid);
+				session.setAttribute("clist",list);
+				request.getRequestDispatcher("../cart.jsp").forward(request, response);
 			}
 		}
 		

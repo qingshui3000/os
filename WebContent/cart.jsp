@@ -1,6 +1,12 @@
+<%@page import="entity.Cart"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ include file="nav.jsp" %>
+<%
+	ArrayList<Cart> list = new ArrayList<Cart>();
+	list = (ArrayList<Cart>)session.getAttribute("clist");
+	request.setAttribute("clist",list);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +33,16 @@
 			<th>商品总价</th>
 			<th>操作</th>
 		</tr>
+		<c:forEach items="${clist}" var="cl">
 		<tr>
-			
+			<td>${cl.pname }</td>
+			<td>${cl.price }</td>
+			<td>${cl.num }</td>
+			<td>${cl.count }</td>
+			<td></td>
 		</tr>
+		</c:forEach>
+		
 	</table>
 <%
 	}else{
