@@ -31,6 +31,26 @@ public class AdminDaoImpl implements AdminDao{
 			e.printStackTrace();
 			return false;
 		}
+		finally {
+			if(stmt!=null) {
+				try {
+					stmt.close();
+					stmt = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+					rs = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 }

@@ -2,10 +2,24 @@ package entity;
 
 public class Cart {
 	private int id;
+	private int uid;
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
 	private String pname;
+	private String pimg;
 	private double price;
 	private int num;
 	private double count;
+	public String getPimg() {
+		return pimg;
+	}
+	public void setPimg(String pimg) {
+		this.pimg = pimg;
+	}
 	public int getId() {
 		return id;
 	}
@@ -33,7 +47,7 @@ public class Cart {
 	public double getCount() {
 		return count;
 	}
-	public void setCount(double count) {
+	public void setCount() {
 		this.count = this.num * this.price;
 	}
 }

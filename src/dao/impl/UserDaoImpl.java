@@ -82,4 +82,20 @@ public class UserDaoImpl implements UserDao{
 		return false;
 	}
 
+	public int getIdByName(String a) {
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "select * from user where account=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,a);
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			int uid = rs.getInt("id");
+			return uid;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }

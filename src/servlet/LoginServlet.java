@@ -47,7 +47,6 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
 		action = request.getParameter("action");
 		HttpSession session = request.getSession();
 		if(action.equals("in")) {
@@ -64,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 			User user = new User(a,p);
 			if(uDao.userCheck(user)) {
 				session.setAttribute("lname",a);
+				session.setAttribute("uid",uDao.getIdByName(a));
 				request.getRequestDispatcher("../index.jsp").forward(request, response);
 			}
 			else {

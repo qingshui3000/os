@@ -66,7 +66,7 @@
 			</div>
 			<div>
 				<h4><strong class="text-danger">会员价：￥${p.price}</strong></h4>
-				<form action="" method="post" role="form">
+				<form action="servlet/CartServlet?action=add&id=${p.id}" method="post" role="form">
 					<div class="form-group">
 						<label>购买数量</label>
 						<button type="button" id="btnsub" class="btn btn-default btn-xs">-</button>
@@ -74,11 +74,9 @@
 						<button type="button" id="btnadd" class="btn btn-default btn-xs">+</button>
 					</div>
 					<div class="form-group">
-						<a href="">
-							<button type="button" class="btn btn-danger" onclick="return check()">
-								<span class="glyphicon glyphicon-shopping-cart"></span>加入购物车
-							</button>
-						</a>
+						<button type="submit" class="btn btn-danger" onclick="return check()">
+							<span class="glyphicon glyphicon-shopping-cart"></span>加入购物车
+						</button>
 						<a href="cart.jsp">
 							<button type="button" class="btn btn-primary" onclick="return check()">
 								<span class="glyphicon glyphicon-th"></span>查看购物车
