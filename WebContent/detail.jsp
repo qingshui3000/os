@@ -42,6 +42,16 @@
 			}
 		});
 	})
+	function check(){
+		var lname = <%=session.getAttribute("lname")%>
+		if(lname!=null){
+			alert("添加成功！");
+		}
+		else{
+			alert("请登录！");
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
@@ -64,8 +74,16 @@
 						<button type="button" id="btnadd" class="btn btn-default btn-xs">+</button>
 					</div>
 					<div class="form-group">
-						<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-shopping-cart"></span>加入购物车</button>
-						<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-th"></span>查看购物车</button>
+						<a href="">
+							<button type="button" class="btn btn-danger" onclick="return check()">
+								<span class="glyphicon glyphicon-shopping-cart"></span>加入购物车
+							</button>
+						</a>
+						<a href="cart.jsp">
+							<button type="button" class="btn btn-primary" onclick="return check()">
+								<span class="glyphicon glyphicon-th"></span>查看购物车
+							</button>
+						</a>
 					</div>
 				</form>
 			</div>
@@ -120,13 +138,39 @@
 		
 	</div>
 	<div class="col-md-9">
-		<h1>详情区</h1>
-		<div>
-			<img src="image/descimg/${pm.img1}.jpg">	
+		<div class="container-fluid">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#menu1">商品详情</a></li>
+				<li><a data-toggle="tab" href="#menu2">规格参数</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="menu1" class="tab-pane fade in active">
+					<div>
+						<img src="image/descimg/${pm.img1}.jpg">	
+					</div>
+					<div>
+						<img src="image/descimg/${pm.img2}.jpg">
+					</div>
+				</div>
+				<div id="menu2" class="tab-pane fade">
+					<table class="table table-hover">
+						<tr>
+							<th>品牌</th>
+							<th>型号</th>
+							<th>上市时间</th>
+							<th>重量</th>
+						</tr>
+						<tr>
+							<td>${pm.brand }</td>
+							<td>${pm.model }</td>
+							<td>${pm.cyear }</td>
+							<td>${pm.weight}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
-		<div>
-			<img src="image/descimg/${pm.img2}.jpg">
-		</div>
+		
 	</div>
 </body>
 </html>

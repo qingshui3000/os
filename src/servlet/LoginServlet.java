@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 			String p = request.getParameter("password");
 			User user = new User(a,p);
 			uDao.save(user);
-			request.getSession().setAttribute("lname",a);
+			session.setAttribute("lname",a);
 			request.getRequestDispatcher("../login.jsp").forward(request, response);
 		}
 		if(action.equals("check")) {
@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 			String p = request.getParameter("password");
 			User user = new User(a,p);
 			if(uDao.userCheck(user)) {
-				request.getSession().setAttribute("lname",a);
+				session.setAttribute("lname",a);
 				request.getRequestDispatcher("../index.jsp").forward(request, response);
 			}
 			else {

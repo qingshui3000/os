@@ -81,5 +81,8 @@
 			</c:forEach>
 		</div>
 	</div>
+	<div class="">
+		<jsp:include page="bottom.jsp"></jsp:include>
+	</div>
 </body>
 </html>
