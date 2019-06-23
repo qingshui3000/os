@@ -17,6 +17,8 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/servlet/LoginServlet</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>AdminServlet</servlet-name>
     <servlet-class>servlet.AdminServlet</servlet-class>
@@ -25,6 +27,8 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/servlet/AdminServlet</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>CartServlet</servlet-name>
     <servlet-class>servlet.CartServlet</servlet-class>
@@ -32,5 +36,15 @@
   <servlet-mapping>
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/servlet/CartServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>servlet.ProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/servlet/ProductServlet</url-pattern>
   </servlet-mapping>
 </web-app>

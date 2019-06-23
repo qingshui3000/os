@@ -15,45 +15,37 @@
 <title>Insert title here</title>
 <style type="text/css">
 	#main{
-		background:black;
+		background:#2D2D2D;
 	}
 </style>
 </head>
 <body>
-<div class="" id="main">
-    <p>这里是底部信息的标题</p>
+<div class="text-info text-center" id="main">
+    <p class="text-center">版权及相关说明</p>
     <div class="row">
         <!-- 部分：一 -->
         <div class="col-md-3">
-            <p>部分：一</p>
+            <p>一些链接</p>
             <div class="row">
-                <div class="col-md-6">
+                <div class="container-fluid">
                     <ul>
-                        <li>部分：一内容</li>
-                        <li>部分：一内容</li>
-                        <li>部分：一内容</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <ul>
-                        <li>部分：一内容</li>
-                        <li>部分：一内容</li>
-                        <li>部分：一内容</li>
+                        <li>
+                        	<a href="https://getbootstrap.com/" target="_blank">本站所使用的前端框架</a>
+                        </li>
+                        <li>
+                        	<a href="https://www.jd.com/" target="_blank">商品图片来源</a>
+                        </li>
+                        <li>
+                        	<a href="https://github.com/qingshui3000/os" target="_blank">Github地址</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <!-- 部分：二 -->
         <div class="col-md-6">
-            <p>部分：二</p>
-            <ul>
-                <li>部分：二内容</li>
-                <li>部分：二内容</li>
-                <li>部分：二内容</li>
-                <li>部分：二内容</li>
-                <li>部分：二内容</li>
-                <li>部分：二内容</li>
-            </ul>
+            <p>本项目仅为学习练习项目，所有实例商品及图片均来自某购物网站。</p>
+            <p>如有侵权请联系管理员删除。</p>
         </div>
         <!-- 部分：三 -->
         <div class="col-md-3">
@@ -61,11 +53,10 @@
                 <li>
                 	<a href="admin/alogin.jsp">管理员登陆</a>
                 </li>
-                <li>部分：三内容</li>
-                <li>部分：三内容</li>
-                <li>部分：三内容</li>
-                <li>部分：三内容</li>
-                <li>部分：三内容</li>
+                <li>
+                	<p>邮箱:zhao6582@qq.com</p>
+                	<p>博客:</p>
+                </li>
             </ul>
         </div>
     </div>

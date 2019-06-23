@@ -9,7 +9,7 @@
 <%@ page isELIgnored="false" %>
 <%
 	ProductDao pDao = new ProductDaoImpl();
-	ArrayList<Product> list = pDao.getAll();
+	ArrayList<Product> list = pDao.getAllHot();
 	request.setAttribute("list",list);
 %>
 <!DOCTYPE html>
@@ -21,9 +21,9 @@
 %>
 <base href="<%=basePath%>">
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
+<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 	#myCarousel{

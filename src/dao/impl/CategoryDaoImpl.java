@@ -64,14 +64,35 @@ public class CategoryDaoImpl implements CategoryDao{
 			String sql = "select * from category where id=?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1,cid);
-			rs = stmt.executeQuery();
 			c.setId(cid);
+			rs = stmt.executeQuery();
+			rs.next();
 			c.setName(rs.getString("name"));
 			return c;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
+		}
+		finally {
+			if(stmt!=null) {
+				try {
+					stmt.close();
+					stmt=null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+					rs=null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 }

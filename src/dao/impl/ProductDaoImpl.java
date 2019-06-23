@@ -17,6 +17,7 @@ public class ProductDaoImpl implements ProductDao{
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	@Override
+	//通过id获得商品信息
 	public Product getItemById(int id) {
 		// TODO Auto-generated method stub
 		Product p = new Product();
@@ -61,6 +62,7 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
+	//获得所有商品信息
 	public ArrayList<Product> getAll() {
 		ArrayList<Product> list = new ArrayList<Product>();
 		// TODO Auto-generated method stub
@@ -85,7 +87,7 @@ public class ProductDaoImpl implements ProductDao{
 			return null;
 		}
 	}
-	
+	//输出浏览记录
 	public ArrayList<Product> getViewList(String list){
 		System.out.println("list:"+list);
 		ArrayList<Product> itemlist = new ArrayList<Product>();
@@ -108,5 +110,92 @@ public class ProductDaoImpl implements ProductDao{
 		else {
 			return null;
 		}
+	}
+
+	@Override
+	//根据分类返回所有商品
+	public ArrayList<Product> getAllByCid(int cid) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "select * from product where cid=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1,cid);
+			ResultSet rs = stmt.executeQuery();
+			ArrayList<Product> list = new ArrayList<Product>();
+			while(rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getDouble("price"));
+				p.setCid(rs.getInt("cid"));
+				p.setImage(rs.getString("image"));
+				list.add(p);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	//获取所有热门商品
+	public ArrayList<Product> getAllHot() {
+		// TODO Auto-generated method stub
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "select * from product where hot=true";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			ArrayList<Product> list = new ArrayList<Product>();
+			while(rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getDouble("price"));
+				p.setCid(rs.getInt("cid"));
+				p.setImage(rs.getString("image"));
+				p.setHot(rs.getBoolean("hot"));
+				p.setInfoid(rs.getInt("infoid"));
+				list.add(p);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	//模糊查询
+	public ArrayList<Product> searchLike(String str) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DBUtil.getConnection();
+			String sql ="select * from product where name like ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1,"%"+str+"%");
+			rs = stmt.executeQuery();
+			ArrayList<Product> list = new ArrayList<Product>();
+			while(rs.next()) {
+				Product p = new Product();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getDouble("price"));
+				p.setCid(rs.getInt("cid"));
+				p.setImage(rs.getString("image"));
+				p.setHot(rs.getBoolean("hot"));
+				p.setInfoid(rs.getInt("infoid"));
+				list.add(p);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

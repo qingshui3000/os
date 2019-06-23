@@ -6,4 +6,5 @@ import entity.Category;
 
 public interface CategoryDao {
 	ArrayList<Category> getAll();
+	Category getById(int cid);
 }

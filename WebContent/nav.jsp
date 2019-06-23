@@ -34,13 +34,19 @@
 			$(this).removeClass("open");
 		});
 	})
+	function check_search(){
+		if(doucment.getElementById("str").value==null){
+			alert("请输入关键字！");
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
 	<div class="container-fluid">
 		<!-- 头部 -->
 		<div style="background:#ffcc33;" id="header">
-			<div class="container">
+			<div class="container-fluid">
 				<h1>Java Web在线商城</h1>
 			</div>
 			<!-- 根据登录状态变换 -->
@@ -69,21 +75,28 @@
 						<ul class="nav navbar-nav">
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									分类
+									<span class="glyphicon glyphicon-th-list"></span>分类
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
 								<c:forEach items="${clist}" var="l">
-									<li><a href="#">${l.name}</a></li>
+									<li><a href="category.jsp?cid=${l.id}">${l.name}</a></li>
 									<li class="divider"></li>
 								</c:forEach>
 								</ul>
 							</li>
 						</ul>
 					</div>
-					<form class="navbar-form navbar-right" role="search">
+					<div>
+						<ul class="nav navbar-nav">
+							<li>
+								<a class="" href="cart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a>
+							</li>
+						</ul>
+					</div>
+					<form class="navbar-form navbar-right" role="search" action="servlet/ProductServlet?action=search" method="post" onsubmit="return check_search()">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
+							<input type="text" class="form-control" name="str" id="str" placeholder="Search">
 						</div>
 						<button type="submit" class="btn btn-inverse">搜索</button>
 					</form>

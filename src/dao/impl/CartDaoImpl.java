@@ -19,14 +19,17 @@ public class CartDaoImpl implements CartDao{
 		// TODO Auto-generated method stub
 		try {
 			conn = DBUtil.getConnection();
-			String sql = "insert into cart(uid,pname,pimg,price,num,count) values(?,?,?,?,?,?)";
+			String sql = "insert into cart(uid,pid,pname,pimg,price,num,count) values(?,?,?,?,?,?,?) on duplicate key update num=num+?,count=count+?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1,cart.getUid());
-			stmt.setString(2,cart.getPname());
-			stmt.setString(3,cart.getPimg());
-			stmt.setDouble(4,cart.getPrice());
-			stmt.setInt(5,cart.getNum());
-			stmt.setDouble(6,cart.getCount());
+			stmt.setInt(2,cart.getPid());
+			stmt.setString(3,cart.getPname());
+			stmt.setString(4,cart.getPimg());
+			stmt.setDouble(5,cart.getPrice());
+			stmt.setInt(6,cart.getNum());
+			stmt.setDouble(7,cart.getCount());
+			stmt.setInt(8,cart.getNum());
+			stmt.setDouble(9,cart.getCount());
 			int rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -56,6 +59,7 @@ public class CartDaoImpl implements CartDao{
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				Cart cart = new Cart();
+				cart.setPid(rs.getInt("pid"));
 				cart.setPname(rs.getString("pname"));
 				cart.setPimg(rs.getString("pimg"));
 				cart.setPrice(rs.getDouble("price"));
@@ -70,6 +74,66 @@ public class CartDaoImpl implements CartDao{
 			e.printStackTrace();
 			return null;
 		}
+		finally {
+			if(stmt!=null) {
+				try {
+					stmt.close();
+					stmt = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+					rs = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	@Override
+	public double getTotalCount(int uid) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "select * from cart where uid=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1,uid);
+			rs = stmt.executeQuery();
+			double total=0;
+			while(rs.next()) {
+				total += rs.getDouble("count");
+			}
+			return total;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(stmt!=null) {
+				try {
+					stmt.close();
+					stmt = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(rs!=null) {
+				try {
+					rs.close();
+					rs = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return 0;
 	}
 
 }

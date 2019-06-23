@@ -49,28 +49,29 @@ public class CartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		if(request.getParameter("action")!=null) {
 			action = request.getParameter("action");
-			HttpSession session = request.getSession();
 			if(action.equals("add")) {
-				int pid = Integer.parseInt(request.getParameter("id"));
-				Product p = pDao.getItemById(pid);
-				Cart cart = new Cart();
-				int uid = Integer.parseInt(session.getAttribute("uid").toString());
-				cart.setUid(uid);
-				cart.setPname(p.getName());
-				cart.setPimg(p.getImage());
-				cart.setNum(Integer.parseInt(request.getParameter("number")));
-				cart.setPrice(p.getPrice());
-				cart.setCount();
-				cDao.add(cart);
-			}
-			if(action.equals("show")) {
-				int uid = Integer.parseInt(session.getAttribute("uid").toString());
-				ArrayList<Cart> list = cDao.getAll(uid);
-				session.setAttribute("clist",list);
-				request.getRequestDispatcher("../cart.jsp").forward(request, response);
+				this.addToCart(request, response);
 			}
 		}
-		
 	}
-
+	
+	//添加进购物车
+	private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		int pid = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+		Product p = pDao.getItemById(pid);
+		Cart cart = new Cart();
+		int uid = Integer.parseInt(session.getAttribute("uid").toString());
+		cart.setUid(uid);
+		cart.setPid(pid);
+		cart.setPname(p.getName());
+		cart.setPimg(p.getImage());
+		cart.setNum(Integer.parseInt(request.getParameter("number")));
+		cart.setPrice(p.getPrice());
+		cart.setCount();
+		cDao.add(cart);
+		ArrayList<Cart> list = cDao.getAll(uid);
+		session.setAttribute("clist",list);
+		request.getRequestDispatcher("../detail.jsp").forward(request, response);
+	}
 }

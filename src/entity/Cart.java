@@ -3,17 +3,25 @@ package entity;
 public class Cart {
 	private int id;
 	private int uid;
+	private int pid;
+	private String pname;
+	private String pimg;
+	private double price;
+	private int num;
+	private double count;
+	
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
 	public int getUid() {
 		return uid;
 	}
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-	private String pname;
-	private String pimg;
-	private double price;
-	private int num;
-	private double count;
 	public String getPimg() {
 		return pimg;
 	}

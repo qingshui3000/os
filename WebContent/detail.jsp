@@ -22,6 +22,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<base href="<%=basePath%>">
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -42,12 +47,19 @@
 			}
 		});
 	})
-	function check(){
+	function check1(){
 		var lname = <%=session.getAttribute("lname")%>
 		if(lname!=null){
 			alert("添加成功！");
 		}
 		else{
+			alert("请登录！");
+			return false;
+		}
+	}
+	function check2(){
+		var lname = <%=session.getAttribute("lname")%>
+		if(lname==null){
 			alert("请登录！");
 			return false;
 		}
@@ -74,11 +86,11 @@
 						<button type="button" id="btnadd" class="btn btn-default btn-xs">+</button>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-danger" onclick="return check()">
+						<button type="submit" class="btn btn-danger" onclick="return check1()">
 							<span class="glyphicon glyphicon-shopping-cart"></span>加入购物车
 						</button>
-						<a href="servlet/CartServlet?action=show">
-							<button type="button" class="btn btn-primary" onclick="return check()">
+						<a href="cart.jsp">
+							<button type="button" class="btn btn-primary" onclick="return check2()">
 								<span class="glyphicon glyphicon-th"></span>查看购物车
 							</button>
 						</a>
