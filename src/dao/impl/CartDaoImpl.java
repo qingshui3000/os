@@ -15,6 +15,7 @@ public class CartDaoImpl implements CartDao{
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	@Override
+	//商品添加至购物车
 	public void add(Cart cart) {
 		// TODO Auto-generated method stub
 		try {
@@ -48,6 +49,7 @@ public class CartDaoImpl implements CartDao{
 		}
 	}
 	@Override
+	//获取指定用户的购物车集合
 	public ArrayList<Cart> getAll(int uid) {
 		// TODO Auto-generated method stub
 		try {
@@ -96,6 +98,7 @@ public class CartDaoImpl implements CartDao{
 		}
 	}
 	@Override
+	//计算购物车总价
 	public double getTotalCount(int uid) {
 		// TODO Auto-generated method stub
 		try {
@@ -135,5 +138,30 @@ public class CartDaoImpl implements CartDao{
 		}
 		return 0;
 	}
-
+	@Override
+	//订单添加成功后清空购物车
+	public void deleteAll(int uid) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "delete from cart where uid=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1,uid);
+			int rs = stmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			if(stmt!=null) {
+				try {
+					stmt.close();
+					stmt = null;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }

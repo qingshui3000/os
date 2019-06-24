@@ -37,7 +37,7 @@
 <%
 	if(session.getAttribute("lname")!=null){
 %>
-	<div>
+	<div class="container-fluid">
 		<h2 class="text-center">确认订单</h2>
 		<table class="table table-hover pull-left">
 			<tr>
@@ -67,7 +67,7 @@
 		<div class="text-center">
 			<strong>总金额：<font class="text-danger">￥${total}</font></strong>
 		</div>
-		<form role="form" class="col-md-4 col-md-offset-8" action="servlet/">
+		<form role="form" class="col-md-4 col-md-offset-8" action="servlet/OrderServlet?action=add" method="post">
 			<div class="form-group">
 				<input class="form-control" name="tel" placeholder="请输入您的手机号码">
 			</div>

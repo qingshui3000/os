@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80015
 File Encoding         : 65001
 
-Date: 2019-06-23 21:01:48
+Date: 2019-06-24 17:50:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,10 +54,6 @@ CREATE TABLE `cart` (
 -- ----------------------------
 -- Records of cart
 -- ----------------------------
-INSERT INTO `cart` VALUES ('50', '77', '1', 'iphoneXR', '1001', '5099.00', '6', '30594.00');
-INSERT INTO `cart` VALUES ('53', '77', '7', '罗技（G）G610机械键盘', '3001', '479.00', '6', '2874.00');
-INSERT INTO `cart` VALUES ('55', '77', '4', '华为 P30', '1004', '3988.00', '1', '3988.00');
-INSERT INTO `cart` VALUES ('56', '77', '5', '荣耀MagicBook 2019', '2001', '4299.00', '1', '4299.00');
 
 -- ----------------------------
 -- Table structure for category
@@ -78,27 +74,29 @@ INSERT INTO `category` VALUES ('3', '键盘');
 INSERT INTO `category` VALUES ('4', '鼠标');
 
 -- ----------------------------
--- Table structure for order
+-- Table structure for orders
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `num` varchar(64) NOT NULL,
+  `no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `uid` int(11) NOT NULL,
-  `tcount` int(11) NOT NULL,
-  `tprice` double(10,2) NOT NULL,
+  `tnum` int(11) NOT NULL,
+  `tcount` double(10,2) NOT NULL,
   `remark` varchar(255) NOT NULL,
   `tel` varchar(32) NOT NULL,
-  `ctime` datetime NOT NULL,
+  `ctime` varchar(50) NOT NULL,
   `statu` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `order_ibfk_1` (`uid`),
-  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
--- Records of order
+-- Records of orders
 -- ----------------------------
+INSERT INTO `orders` VALUES ('1', '7720190624171731', '77', '14', '41755.00', 'haha', '12345678900', '20190624171731', '0');
+INSERT INTO `orders` VALUES ('4', '7720190624172958', '77', '14', '41755.00', '111', '12222', '20190624172958', '0');
 
 -- ----------------------------
 -- Table structure for param

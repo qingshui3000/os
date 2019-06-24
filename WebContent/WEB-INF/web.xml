@@ -47,4 +47,13 @@
     <servlet-name>ProductServlet</servlet-name>
     <url-pattern>/servlet/ProductServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>servlet.OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrderServlet</servlet-name>
+    <url-pattern>/servlet/OrderServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

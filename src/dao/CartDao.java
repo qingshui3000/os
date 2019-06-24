@@ -8,4 +8,5 @@ public interface CartDao {
 	void add(Cart cart);
 	ArrayList<Cart> getAll(int uid);
 	double getTotalCount(int uid);
+	void deleteAll(int uid);
 }
