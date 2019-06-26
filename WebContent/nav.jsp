@@ -94,6 +94,13 @@
 							</li>
 						</ul>
 					</div>
+					<div>
+						<ul class="nav navbar-nav">
+							<li>
+								<a href="myorder.jsp"><span class="glyphicon glyphicon-briefcase"></span>我的订单</a>
+							</li>
+						</ul>
+					</div>
 					<form class="navbar-form navbar-right" role="search" action="servlet/ProductServlet?action=search" method="post" onsubmit="return check_search()">
 						<div class="form-group">
 							<input type="text" class="form-control" name="str" id="str" placeholder="Search">

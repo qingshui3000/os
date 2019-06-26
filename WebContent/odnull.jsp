@@ -16,6 +16,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>fail</h2>
+	<div class="container-fluid">
+		<h2>fail</h2>
+	</div>
 </body>
 </html>

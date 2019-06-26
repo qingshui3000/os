@@ -1,23 +1,8 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : localhost_3306
-Source Server Version : 80015
-Source Host           : localhost:3306
-Source Database       : os
-
-Target Server Type    : MYSQL
-Target Server Version : 80015
-File Encoding         : 65001
-
-Date: 2019-06-24 17:50:34
-*/
-
+DROP DATABASE IF EXISTS os;
+CREATE DATABASE os;
+USE os;
 SET FOREIGN_KEY_CHECKS=0;
 
--- ----------------------------
--- Table structure for admin
--- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -26,14 +11,10 @@ CREATE TABLE `admin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of admin
--- ----------------------------
+
 INSERT INTO `admin` VALUES ('1', 'admin', 'admin');
 
--- ----------------------------
--- Table structure for cart
--- ----------------------------
+
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -51,13 +32,7 @@ CREATE TABLE `cart` (
   CONSTRAINT `fu_pid` FOREIGN KEY (`pid`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of cart
--- ----------------------------
 
--- ----------------------------
--- Table structure for category
--- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
@@ -65,17 +40,8 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of category
--- ----------------------------
-INSERT INTO `category` VALUES ('1', '手机');
-INSERT INTO `category` VALUES ('2', '电脑');
-INSERT INTO `category` VALUES ('3', '键盘');
-INSERT INTO `category` VALUES ('4', '鼠标');
 
--- ----------------------------
--- Table structure for orders
--- ----------------------------
+
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -92,15 +58,8 @@ CREATE TABLE `orders` (
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of orders
--- ----------------------------
-INSERT INTO `orders` VALUES ('1', '7720190624171731', '77', '14', '41755.00', 'haha', '12345678900', '20190624171731', '0');
-INSERT INTO `orders` VALUES ('4', '7720190624172958', '77', '14', '41755.00', '111', '12222', '20190624172958', '0');
 
--- ----------------------------
--- Table structure for param
--- ----------------------------
+
 DROP TABLE IF EXISTS `param`;
 CREATE TABLE `param` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -114,21 +73,7 @@ CREATE TABLE `param` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of param
--- ----------------------------
-INSERT INTO `param` VALUES ('1', 'Apple', ' iPhone XR (A2108)', '2018-10-01', '194.00', '1001a', null, null);
-INSERT INTO `param` VALUES ('2', 'Apple', 'iPhone XS Max (A2103)', '2018-09-01', '208.00', '1002a', null, null);
-INSERT INTO `param` VALUES ('3', 'HUAWEI', 'HUAWEI Mate 20', '2018-10-01', '188.00', '1003a', null, null);
-INSERT INTO `param` VALUES ('4', 'HUAWEI', 'HUAWEI P30', '2019-04-01', '165.00', '1004a', null, null);
-INSERT INTO `param` VALUES ('5', 'HONOR', '荣耀 MagicBook 2019(KPR-W19)', '2019-04-01', '1500.00', '2001a', '2001b', null);
-INSERT INTO `param` VALUES ('6', 'Lenovo', '联想-拯救者Y7000p', '2019-01-01', '2500.00', '2002a', '2002b', null);
-INSERT INTO `param` VALUES ('7', '罗技', 'G610红轴', '2019-01-01', '1230.00', '3001a', '3001b', null);
-INSERT INTO `param` VALUES ('8', '雷柏（Rapoo）', 'V500PRO', '2019-01-01', '907.00', '3002a', '3002b', null);
 
--- ----------------------------
--- Table structure for product
--- ----------------------------
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -145,21 +90,6 @@ CREATE TABLE `product` (
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`infoid`) REFERENCES `param` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of product
--- ----------------------------
-INSERT INTO `product` VALUES ('1', '苹果iPhoneXR', '5099.00', '1', '1001', '1', '1');
-INSERT INTO `product` VALUES ('2', '苹果iPhoneXS MAX', '7199.00', '1', '1002', '0', '2');
-INSERT INTO `product` VALUES ('3', '华为 Mate20', '3499.00', '1', '1003', '0', '3');
-INSERT INTO `product` VALUES ('4', '华为 P30', '3988.00', '1', '1004', '1', '4');
-INSERT INTO `product` VALUES ('5', '荣耀MagicBook 2019', '4299.00', '2', '2001', '1', '5');
-INSERT INTO `product` VALUES ('6', '联想(Lenovo)拯救者Y7000P', '9099.00', '2', '2002', '1', '6');
-INSERT INTO `product` VALUES ('7', '罗技（G）G610机械键盘', '479.00', '3', '3001', '1', '7');
-INSERT INTO `product` VALUES ('8', '雷柏（Rapoo） V500PRO', '169.00', '3', '3002', '0', '8');
-
--- ----------------------------
--- Table structure for user
--- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -168,9 +98,3 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES ('74', '123', '123');
-INSERT INTO `user` VALUES ('75', '123', '123');
-INSERT INTO `user` VALUES ('77', 'qssq', '123');

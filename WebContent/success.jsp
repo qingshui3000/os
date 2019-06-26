@@ -26,9 +26,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>添加成功,请查看订单!</h1>
-	<a href="myorder.jsp">
-		123
-	</a>
+	<div class="container-fluid">
+		<h1>添加成功,请查看订单!</h1>
+		<a href="myorder.jsp">
+			123
+		</a>
+	</div>
 </body>
 </html>

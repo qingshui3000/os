@@ -43,10 +43,10 @@ public class AdminServlet extends HttpServlet {
 		String p = request.getParameter("password");
 		if(aDao.check(a, p)) {
 			request.getSession().setAttribute("aname", a);
-			request.getRequestDispatcher("../admin/aindex.jsp").forward(request, response);
+			response.sendRedirect("../admin/aindex.jsp");
 		}
 		else {
-			request.getRequestDispatcher("../admin/afail.jsp").forward(request, response);
+			response.sendRedirect("../admin/afail.jsp");
 		}
 	}
 

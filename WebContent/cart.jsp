@@ -76,14 +76,20 @@
 		</tr>
 		</c:forEach>
 	</table>
+<%
+	if(session.getAttribute("clist")!=null){
+%>
 	<div class="text-center">
-		<strong>总金额：<font class="text-danger">￥${total}</font></strong>
+		<strong>总金额：<font class="text-danger">￥0.0</font></strong>
 	</div>
 	<div class="text-right">
 		<a href="order.jsp">
 			<button class="btn btn-danger">提交订单</button>
 		</a>
 	</div>
+<%
+	}
+%>
 </div>
 <%
 	}else{
